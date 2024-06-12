@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Marks</title>
+    <link rel="stylesheet" href="interview.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2 style= "text-align: center; margin-bottom: 30px">Enter Student Names and Marks</h2>
+        <form id="marksForm">
+            <div class="input-group">
+                <div class="studentname">
+                    <label for="student1">Student 1 Name:</label>
+                    <input type="text" id="student1" name="student1" placeholder="Enter name" required>
+                </div>
+                <div class="studentmarks">
+                    <label for="subject1">Subject 1 Marks:</label>
+                    <input type="number" id="subject1" name="subject1_1" placeholder="Enter marks for Subject 1" required> 
+                    <label for="subject2">Subject 2 Marks:</label>
+                    <input type="number" id="subject2" name="subject2_1" placeholder="Enter marks for Subject 2" required>
+                    <label for="subject3">Subject 3 Marks:</label>
+                    <input type="number" id="subject3" name="subject3_1" placeholder="Enter marks for Subject 3" required>
+                </div>
+            </div>
+            <hr style="width: 80%">
+            <div class="input-group">
+                <div class="studentname">
+                    <label for="student1">Student 2 Name:</label>
+                    <input type="text" id="student1" name="student2" placeholder="Enter name" required>
+                </div>
+                <div class="studentmarks">
+                    <label for="subject1">Subject 1 Marks:</label>
+                    <input type="number" id="subject1" name="subject1_2" placeholder="Enter marks for Subject 1" required> 
+                    <label for="subject2">Subject 2 Marks:</label>
+                    <input type="number" id="subject2" name="subject2_2" placeholder="Enter marks for Subject 2" required>
+                    <label for="subject3">Subject 3 Marks:</label>
+                    <input type="number" id="subject3" name="subject3_2" placeholder="Enter marks for Subject 3" required>
+                </div>
+            </div>
+            <hr style="width: 80%">
+            <div class="input-group">
+                <div class="studentname">
+                    <label for="student1">Student 3 Name:</label>
+                    <input type="text" id="student1" name="student3" placeholder="Enter name" required>
+                </div>
+                <div class="studentmarks">
+                    <label for="subject1">Subject 1 Marks:</label>
+                    <input type="number" id="subject1" name="subject1_3" placeholder="Enter marks for Subject 1" required> 
+                    <label for="subject2">Subject 2 Marks:</label>
+                    <input type="number" id="subject2" name="subject2_3" placeholder="Enter marks for Subject 2" required>
+                    <label for="subject3">Subject 3 Marks:</label>
+                    <input type="number" id="subject3" name="subject3_3" placeholder="Enter marks for Subject 3" required>
+                </div>
+            </div>
+            <hr style="width: 80%">
+            <div class="input-group">
+                <div class="studentname">
+                    <label for="student1">Student 4 Name:</label>
+                    <input type="text" id="student1" name="student4" placeholder="Enter name"required>
+                </div>
+                <div class="studentmarks">
+                    <label for="subject1">Subject 1 Marks:</label>
+                    <input type="number" id="subject1" name="subject1_4" placeholder="Enter marks for Subject 1" required> 
+                    <label for="subject2">Subject 2 Marks:</label>
+                    <input type="number" id="subject2" name="subject2_4" placeholder="Enter marks for Subject 2" required>
+                    <label for="subject3">Subject 3 Marks:</label>
+                    <input type="number" id="subject3" name="subject3_4" placeholder="Enter marks for Subject 3" required>
+                </div>
+            </div>
+            <hr style="width: 80%">
+            <div class="input-group">
+                <div class="studentname">
+                    <label for="student1">Student 5 Name:</label>
+                    <input type="text" id="student1" name="student5" placeholder="Enter name" required>
+                </div>
+                <div class="studentmarks">
+                    <label for="subject1">Subject 1 Marks:</label>
+                    <input type="number" id="subject1" name="subject1_5" placeholder="Enter marks for Subject 1" required> 
+                    <label for="subject2">Subject 2 Marks:</label>
+                    <input type="number" id="subject2" name="subject2_5" placeholder="Enter marks for Subject 2" required>
+                    <label for="subject3">Subject 3 Marks:</label>
+                    <input type="number" id="subject3" name="subject3_5" placeholder="Enter marks for Subject 3" required>
+                </div>
+            </div>
+            <button type="submit" class="button"><p class="buttontext">Calculate Total</p></button>
+        </form>
+        <script>
+            document.getElementById('marksForm').addEventListener('submit', function(e) {
+                e.preventDefault();  //Prevent refreshing the page
+            
+                const formData = new FormData(this);
+                const studentTotals = [];
+            
+                // Loop through form data to calculate total marks for each student
+                for (let i = 1; i <= 5; i++) {
+                    const studentName = formData.get('student' + i);
+                    const subject1 = parseInt(formData.get('subject1_' + i));
+                    const subject2 = parseInt(formData.get('subject2_' + i));
+                    const subject3 = parseInt(formData.get('subject3_' + i));
+            
+                    const totalMarks = subject1 + subject2 + subject3;
+                    studentTotals.push({ studentName, totalMarks });
+                }
+
+                 // Calculate position for the pop-up window
+                const popupWidth = 500; // Width of the pop-up window
+                const popupHeight = 250; // Height of the pop-up window
+                const screenWidth = window.screen.width;
+                const screenHeight = window.screen.height;
+                const left = (screenWidth - popupWidth) / 2;
+                const top = (screenHeight - popupHeight) / 2;
+
+                // Create a pop-up window
+                const popup = window.open('', 'Total Marks',  `width=${popupWidth},height=${popupHeight},left=${left},top=${top}`);
+
+                // Set the title of the pop-up window
+                popup.document.title = 'Total Marks';
+
+                // Create canvas element inside the pop-up window
+                const canvas = popup.document.createElement('canvas');
+                popup.document.body.appendChild(canvas);
+
+                // Get student names and total marks
+                const studentNames = studentTotals.map(item => item.studentName);
+                const totalMarks = studentTotals.map(item => item.totalMarks);
+
+                // Draw bar graph
+                new Chart(canvas, {
+                    type: 'bar',
+                    data: {
+                        labels: studentNames,
+                        datasets: [{
+                            label: 'Total Marks',
+                            data: totalMarks,
+                            backgroundColor: 'rgba(54, 162, 235, 0.6)', // Blue color
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                },
+                                gridLines: {
+                                    display: false
+                                  },
+                                  stacked: false
+                            }],
+                            xAxes: [{
+                                stacked: false,
+                                gridLines: {
+                                  color: "transparent"
+                                }
+                              }],
+                        }
+                    }
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>

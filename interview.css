@@ -1,0 +1,60 @@
+
+body {
+    font-family: "Arial", sans-serif;
+}
+.container {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 15px;
+    background-color: #F5F5DC;
+    align-items: center;
+    justify-content: center;
+}
+.input-group {
+    padding: 10px;
+    display: flex;
+    justify-content:space-evenly;
+}
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.input-group input {
+    width: 250px;
+    padding: 7px;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+}
+.studentmarks input{
+    margin-bottom: 10px;
+}
+.button {
+    margin-bottom: 50px;
+    margin-top: 50px;
+    margin-left: 35%;
+    border-radius: 15px;
+    width: 200px;  
+    padding: 5px 10px;  
+    background-color: #978256;
+    border-style: hidden;
+    font-size: 15px; 
+}
+.buttontext {
+    color: #ffff;
+}
+.chart {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    margin-top: 30px;
+    height: 300px;
+}
+
+.bar {
+    width: 50px;
+    background-color: skyblue;
+    text-align: center;
+    margin-right: 10px;
+}
