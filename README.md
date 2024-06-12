@@ -3,8 +3,8 @@ The following codes are the answers for the questions for the SB Telecom Singapo
 
 
 ### The interview.py file is for question 1 of the pre-interview (Python)
-I used 2 methods to solve this question \n
-. Sets and counts \n
+I used 2 methods to solve this question <br>
+. Sets and counts <br>
 . Brute Force
 
 ### The interviewUI.html and interview.css is for question 2 of the pre-interview question (UI design)
